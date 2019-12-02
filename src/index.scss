@@ -1,4 +1,5 @@
 @import '../src/assets/css/style.scss';
+@import url('https://fonts.googleapis.com/css?family=Alata|Pacifico&display=swap&subset=latin-ext');
 
 body {
   margin: 0;
@@ -7,6 +8,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  * {
+    // font-family: 'Pacifico', cursive;
+    font-family: 'Alata', sans-serif;
+  }
 }
 
 code {
