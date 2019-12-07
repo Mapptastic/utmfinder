@@ -1,5 +1,8 @@
-@import '../src/assets/css/style.scss';
 @import url('https://fonts.googleapis.com/css?family=Alata|Pacifico&display=swap&subset=latin-ext');
+
+@import '../src/assets/css/style.scss';
+
+@import '../src/components/Navbar/Navbar.scss';
 
 body {
   margin: 0;
@@ -14,7 +17,4 @@ body {
   }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
+

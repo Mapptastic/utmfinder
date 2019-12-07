@@ -22,8 +22,8 @@ class Map extends Component {
   flyTo() {
     const { lat, lng } = this.state
     const zone = findUTMZone(lng, lat)
-    const popup = new mapboxgl.Popup({ offset: 30 })
-      .setText(`longitude: ${lng} | latitude: ${lat} | zone: ${zone} `);
+    const popup = new mapboxgl.Popup({ offset: 35 ,isOpen: true})
+      .setHTML(`longitude: ${lng} <br> latitude: ${lat} <br> zone: ${zone} `);
 
     this.map.flyTo({ center: [lng, lat], zoom: 3 })
 
@@ -31,6 +31,7 @@ class Map extends Component {
       .setLngLat([lng, lat])
       .setPopup(popup)
       .addTo(this.map)
+      .togglePopup()
   }
 
   displayLocationInfo(position) {
