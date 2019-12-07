@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import mapboxgl from '../../../node_modules/mapbox-gl/dist/mapbox-gl-dev';
 
+import { findUTMZone } from '../../utils/mapUtils'
 
 import './Map.scss';
 
@@ -9,56 +10,51 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoib3plcm9yaHVuIiwiYSI6ImNqYmF4NHh2dTEwbTAycHAzb
 class Map extends Component {
   constructor() {
     super()
-    this.state = { lat: -101.92426, lng: 40.70048 }
+    this.state = { lat: 40.70048, lng: -101.92426 }
     this.map = {};
 
   }
 
-  // map object to share
-
-
   componentDidMount() {
-    // const { teams } = this.props;
     this.initMap();
-    
+  }
+
+  flyTo() {
+    const { lat, lng } = this.state
+    const zone = findUTMZone(lng, lat)
+    const popup = new mapboxgl.Popup({ offset: 30 })
+      .setText(`longitude: ${lng} | latitude: ${lat} | zone: ${zone} `);
+
+    this.map.flyTo({ center: [lng, lat], zoom: 3 })
+
+    new mapboxgl.Marker()
+      .setLngLat([lng, lat])
+      .setPopup(popup)
+      .addTo(this.map)
   }
 
   displayLocationInfo(position) {
-    const lng = position.coords.longitude;
-    const lat = position.coords.latitude;
-
-    console.log(`longitude: ${lng} | latitude: ${lat}`);
-    this.map.flyTo({ center: [lng, lat], zoom: 12 })
-    const marker = new mapboxgl.Marker()
-      .setLngLat([lng, lat])
-      .addTo(this.map);
+    const { coords: { longitude, latitude } } = position
+    const state = { lat: latitude, lng: longitude }
+    this.setState(state, () => {
+      this.flyTo()
+    })
   }
-
 
   initMap() {
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
-      style: 'mapbox://styles/ozerorhun/cjtgahlop0njy1gpxpntt9ej5',
+      style: 'mapbox://styles/ozerorhun/ck3vklnqx0twp1clkqz3jy3lf',
       center: [41.01513, 28.979530],
       zoom: 3,
-      pitch: 50,
-      bearing: 27
     });
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.displayLocationInfo.bind(this));
     }
-    // this.drawMarkers(teams);
   }
 
   render() {
     return (<div>
-      {/* <code>
-        latitude: {latitude}<br />
-        longitude: {longitude}<br />
-        timestamp: {timestamp}<br />
-        accuracy: {accuracy && `${accuracy}m`}<br />
-        error: {error}
-      </code> */}
       <div ref={el => { this.mapContainer = el }} className="map-container" />
     </div>);
   }
