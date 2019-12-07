@@ -12,7 +12,6 @@ class Map extends Component {
     super()
     this.state = { lat: 40.70048, lng: -101.92426 }
     this.map = {};
-
   }
 
   componentDidMount() {
