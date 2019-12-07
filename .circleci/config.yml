@@ -31,12 +31,15 @@ jobs:
       - image: circleci/node:10.8.0
     working_directory: ~/repo
     steps:
+      - checkout
+
       - restore_cache:
           keys:
             - v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
       - run:
           name: show directory
           command: pwd
+      - run: npm install
       - run:
           name: look in directory
           command: ls -ltr
