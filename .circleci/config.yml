@@ -32,7 +32,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - run:
-          name: show  
+          name: show
           command: pwd
       - run:
           name: look in directory
@@ -44,3 +44,12 @@ jobs:
           name: Deploy Master to Surge.sh
           command: surge --project ./build --domain utm-finder.surge.sh
 
+workflows:
+  version: 2
+
+  -deploy:
+    jobs:
+      - build-job
+      - deploy-job:
+          requires:
+            - build-job
