@@ -45,7 +45,7 @@ jobs:
           command: ls -ltr
       - run:
           name: build
-          command: npm run build
+          command: CI=false npm run build
       - run:
           name: Deploy Master to Surge.sh
           command: surge --project ./build --domain utm-finder.surge.sh
