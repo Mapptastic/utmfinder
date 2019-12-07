@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import mapboxgl from '../../../node_modules/mapbox-gl/dist/mapbox-gl-dev';
+import mapboxgl from 'mapbox-gl';
 
 import { findUTMZone } from '../../utils/mapUtils'
 

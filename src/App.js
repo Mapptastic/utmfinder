@@ -1,15 +1,15 @@
 import React from 'react';
 import './App.css';
 
-import Navbar from '../src/components/Navbar/Navbar'
-import Map from '../src/components/Map/Map'
+import Navbar from "./components/Navbar/Navbar"
+import Map from "./components/Map/Map"
 
 
 function App() {
   return (
     <div className="App">
-      <Navbar></Navbar>
-      <Map></Map>
+      <Navbar />
+      <Map />
     </div>
   );
 }
