@@ -53,12 +53,15 @@ jobs:
 workflows:
   version: 2
 
-  -deploy:
+  -build-deploy-workflow:
     jobs:
-      - build-job
+      - build-job:
+          filters:
+            branches:
+              only: master
       - deploy-job:
           requires:
             - build-job
-        filters:
-          branches:
-            only: master
+          filters:
+            branches:
+              only: master
