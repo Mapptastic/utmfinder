@@ -29,11 +29,11 @@ jobs:
   deploy-job:
     docker:
       - image: circleci/node:10.8.0
-    working_directory: ~/repo 
-      steps:
+    working_directory: ~/repo
+    steps:
       - restore_cache:
-             keys:
-              - v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }} 
+          keys:
+            - v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
       - run:
           name: show directory
           command: pwd
