@@ -48,7 +48,7 @@ jobs:
           command: CI=false npm run build
       - run:
           name: Deploy Master to Surge.sh
-          command: surge --project ./build --domain utm-finder.surge.sh
+          command: npm run deploy
 
 workflows:
   version: 2
