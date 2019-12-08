@@ -21,7 +21,7 @@ class Map extends Component {
   flyTo() {
     const { lat, lng } = this.state
     const zone = findUTMZone(lng, lat)
-    const popup = new mapboxgl.Popup({ offset: 35 ,isOpen: true})
+    const popup = new mapboxgl.Popup({ offset: 35, isOpen: true })
       .setHTML(`longitude: ${lng} <br> latitude: ${lat} <br> zone: ${zone} `);
 
     this.map.flyTo({ center: [lng, lat], zoom: 3 })
@@ -54,9 +54,10 @@ class Map extends Component {
   }
 
   render() {
-    return (<div>
-      <div ref={el => { this.mapContainer = el }} className="map-container" />
-    </div>);
+    return (
+      <div>
+        <div ref={el => { this.mapContainer = el }} className="map-container" />
+      </div>);
   }
 }
 

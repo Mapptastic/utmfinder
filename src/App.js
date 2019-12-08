@@ -9,20 +9,33 @@ import Navbar from '../src/components/Navbar/Navbar';
 function App() {
   let [appState, setAppState] = useState({ showModal: true, geolocationPermission: false });
   useEffect(() => {
-    console.log('Use Effect Call!')
-    navigator.permissions.query({ name: 'geolocation' }).then(function (result) {
-      if (result.state === 'granted') {
-        setAppState({
-          geolocationPermission: true,
-          showModal: false
-        });
-      } else {
-        setAppState({
-          geolocationPermission: false,
-          showModal: true
-        });
-      }
-    });
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+    const success = () => {
+      navigator.permissions.query({ name: 'geolocation' }).then(function (result) {
+        if (result.state === 'granted') {
+          setAppState({
+            geolocationPermission: true,
+            showModal: false
+          });
+        } else {
+          setAppState({
+            geolocationPermission: false,
+            showModal: true
+          });
+        }
+      });
+    };
+    const error = () => {
+
+    };
+
+    navigator.geolocation.getCurrentPosition(success, error, options);
+
+
   }, []);
 
   const hideModal = () => {
@@ -40,8 +53,7 @@ function App() {
           show={appState.showModal}
           handleClose={hideModal}
         >
-          <p>Modal</p>
-          <p>Data</p>
+          <p>Devam etmek için konum bilgisine izin ver butonuna tıklayınız !</p>
         </Modal>
       }
     </div>
