@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import mapboxgl from '../../../node_modules/mapbox-gl/dist/mapbox-gl-dev';
 
@@ -8,15 +9,21 @@ import './Map.scss';
 mapboxgl.accessToken = 'pk.eyJ1Ijoib3plcm9yaHVuIiwiYSI6ImNqYmF4NHh2dTEwbTAycHAzbnd4azhwcGEifQ.LsST6QrnJ0XEar6wgnnfSg';
 
 class Map extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = { lat: 40.70048, lng: -101.92426 }
     this.map = {};
   }
 
   componentDidMount() {
     this.initMap();
-  }
+  };
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.userPermission) {
+      navigator.geolocation.getCurrentPosition(this.displayLocationInfo.bind(this));
+    }
+  };
 
   flyTo() {
     const { lat, lng } = this.state
@@ -48,9 +55,6 @@ class Map extends Component {
       center: [41.01513, 28.979530],
       zoom: 3,
     });
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.displayLocationInfo.bind(this));
-    }
   }
 
   render() {
