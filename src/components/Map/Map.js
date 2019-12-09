@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import mapboxgl from 'mapbox-gl';
 
@@ -8,21 +9,26 @@ import './Map.scss';
 mapboxgl.accessToken = 'pk.eyJ1Ijoib3plcm9yaHVuIiwiYSI6ImNqYmF4NHh2dTEwbTAycHAzbnd4azhwcGEifQ.LsST6QrnJ0XEar6wgnnfSg';
 
 class Map extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = { lat: 40.70048, lng: -101.92426 }
     this.map = {};
-
   }
 
   componentDidMount() {
     this.initMap();
-  }
+  };
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.userPermission) {
+      navigator.geolocation.getCurrentPosition(this.displayLocationInfo.bind(this));
+    }
+  };
 
   flyTo() {
     const { lat, lng } = this.state
     const zone = findUTMZone(lng, lat)
-    const popup = new mapboxgl.Popup({ offset: 35 ,isOpen: true})
+    const popup = new mapboxgl.Popup({ offset: 35, isOpen: true })
       .setHTML(`longitude: ${lng} <br> latitude: ${lat} <br> zone: ${zone} `);
 
     this.map.flyTo({ center: [lng, lat], zoom: 3 })
@@ -49,15 +55,13 @@ class Map extends Component {
       center: [41.01513, 28.979530],
       zoom: 3,
     });
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.displayLocationInfo.bind(this));
-    }
   }
 
   render() {
-    return (<div>
-      <div ref={el => { this.mapContainer = el }} className="map-container" />
-    </div>);
+    return (
+      <div>
+        <div ref={el => { this.mapContainer = el }} className="map-container" />
+      </div>);
   }
 }
 
