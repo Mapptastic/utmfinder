@@ -32,10 +32,6 @@ function App() {
     maximumAge: 0
   };
 
-  // useEffect(() => {
-  //   navigator.geolocation.getCurrentPosition(success, error, options);
-  // }, []);
-
   const hideModal = () => {
     setAppState({
       ...appState,
@@ -51,7 +47,6 @@ function App() {
     navigator.geolocation.getCurrentPosition(success, error, options);
   };
   
-  debugger
   return (
     <div className="App">
       <Navbar />
@@ -61,7 +56,7 @@ function App() {
         handleClose={hideModal}
         handleLocationPermission={handleLocationPermission}
       >
-        <p>Please allow location to get utm zone of current location !</p>
+        <p>Please allow location to get utm zone of current location!</p>
       </Modal>
 
     </div>

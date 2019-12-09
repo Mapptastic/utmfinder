@@ -11,12 +11,13 @@ const Modal = ({ handleClose, show, children, handleLocationPermission }) => {
         {children}
         <button
           type="button"
+          className="modal-btn"
           onClick={handleLocationPermission}
           onMouseOut={() => setLPHoverState({ hover: false })}
           onMouseOver={() => setLPHoverState({ hover: true })}>
           <span role="img" aria-label="emo">{locationPermissionHoverState.hover ? `🙉` : `🙈`} Allow Location</span>
         </button>
-        <button type="button" onClick={handleClose}>close</button>
+        <button className="modal-btn" type="button" onClick={handleClose}>Close</button>
       </section>
     </div>
   );
