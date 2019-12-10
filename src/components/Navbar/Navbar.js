@@ -7,7 +7,7 @@ const Navbar = () => {
       <div className="navbar-brand">
         <a className="navbar-item" href="">
           <img src={logo} alt="Mapptastic UTM finder: Free and open source UTM zone finder" />
-          MAPPTASTICdsa ds
+          MAPPTASTIC
         </a>
         <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
           <span aria-hidden="true"  />

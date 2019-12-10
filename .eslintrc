@@ -24,10 +24,13 @@
       "absolute-first"
     ],
     "import/newline-after-import": "error",
+    "no-void":0,
     "jsx-a11y/label-has-associated-control": 0,
+    "jsx-a11y/control-has-associated-label": 0,
     "jsx-a11y/anchor-is-valid": 0,
     "jsx-a11y/click-events-have-key-events":0,
-    "import/prefer-default-export":0,
+    "import/prefer-default-export":0
+    
   },
   "globals": {
     "window": true,
@@ -36,7 +39,7 @@
     "FormData": true,
     "FileReader": true,
     "Blob": true,
-    "navigator": true
+    "navigator": true,
   },
   "parser": "babel-eslint",
   "env": {

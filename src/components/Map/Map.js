@@ -11,7 +11,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoib3plcm9yaHVuIiwiYSI6ImNqYmF4NHh2dTEwbTAycHAzb
 class Map extends Component {
   constructor(props) {
     super(props)
-    this.state = { lat: 40.70048, lng: -101.92426 }
+    this.state = { lat: 40.70048, lng: -101.92426, userPermission: false }
     this.map = {};
   }
 
@@ -19,11 +19,20 @@ class Map extends Component {
     this.initMap();
   };
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.userPermission) {
+  componentDidUpdate(prevProps, prevState){
+    if (prevState.userPermission !== this.state.userPermission) {
       navigator.geolocation.getCurrentPosition(this.displayLocationInfo.bind(this));
     }
-  };
+  }
+
+  static getDerivedStateFromProps(nextProps) {
+    const { userPermission } = nextProps
+    if (userPermission === true) {
+      return { userPermission } 
+    }
+    return null;
+  }
+
 
   flyTo() {
     const { lat, lng } = this.state
