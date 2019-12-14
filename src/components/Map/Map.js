@@ -1,6 +1,8 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import mapboxgl from 'mapbox-gl';
+import Tooltip from '../Tooltip/Tooltip';
 
 import { findUTMZone } from '../../utils/mapUtils'
 
@@ -13,17 +15,44 @@ class Map extends Component {
     super(props)
     this.state = { lat: 40.70048, lng: -101.92426 }
     this.map = {};
-  }
+    this.tooltipContainer = "";
+  };
 
   componentDidMount() {
     this.initMap();
+
   };
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.userPermission) {
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.userPermission !== this.state.userPermission) {
       navigator.geolocation.getCurrentPosition(this.displayLocationInfo.bind(this));
     }
   };
+
+  setTooltip(features,coordinates) {
+    if (features.length) {
+      ReactDOM.render(
+        React.createElement(
+          Tooltip, {
+          features,
+          coordinates
+        }
+        ),
+        this.tooltipContainer
+      );
+    } else {
+      this.tooltipContainer.innerHTML = '';
+    }
+  };
+
+  static getDerivedStateFromProps(nextProps) {
+    const { userPermission } = nextProps
+    if (userPermission === true) {
+      return { userPermission }
+    }
+    return null;
+  }
+
 
   flyTo() {
     const { lat, lng } = this.state
@@ -49,11 +78,21 @@ class Map extends Component {
   }
 
   initMap() {
+    this.tooltipContainer = document.createElement('div');
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
       style: 'mapbox://styles/ozerorhun/ck3vklnqx0twp1clkqz3jy3lf',
       center: [41.01513, 28.979530],
       zoom: 3,
+    });
+    const tooltip = new mapboxgl.Marker(this.tooltipContainer, {
+      offset: [-60, 0]
+    }).setLngLat([0, 0]).addTo(this.map);
+    this.map.on('click', (e) => {
+      const features = this.map.queryRenderedFeatures(e.point);
+      tooltip.setLngLat(e.lngLat);
+      this.map.getCanvas().style.cursor = features.length ? 'pointer' : '';
+      this.setTooltip(features, e.lngLat);
     });
   }
 
