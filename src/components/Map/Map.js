@@ -2,10 +2,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import mapboxgl from 'mapbox-gl';
+
 import Tooltip from '../Tooltip/Tooltip';
-
 import { findUTMZone } from '../../utils/mapUtils'
-
 import './Map.scss';
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoib3plcm9yaHVuIiwiYSI6ImNqYmF4NHh2dTEwbTAycHAzbnd4azhwcGEifQ.LsST6QrnJ0XEar6wgnnfSg';
