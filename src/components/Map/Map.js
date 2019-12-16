@@ -1,8 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import mapboxgl from 'mapbox-gl';
-import Tooltip from '../Tooltip/Tooltip';
 
 import { findUTMZone } from '../../utils/mapUtils'
 
@@ -13,42 +11,24 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoib3plcm9yaHVuIiwiYSI6ImNqYmF4NHh2dTEwbTAycHAzb
 class Map extends Component {
   constructor(props) {
     super(props)
-    this.state = { lat: 40.70048, lng: -101.92426 }
+    this.state = { lat: 40.70048, lng: -101.92426, userPermission: false }
     this.map = {};
-    this.tooltipContainer = "";
-  };
+  }
 
   componentDidMount() {
     this.initMap();
-
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps, prevState){
     if (prevState.userPermission !== this.state.userPermission) {
       navigator.geolocation.getCurrentPosition(this.displayLocationInfo.bind(this));
     }
-  };
-
-  setTooltip(features,coordinates) {
-    if (features.length) {
-      ReactDOM.render(
-        React.createElement(
-          Tooltip, {
-          features,
-          coordinates
-        }
-        ),
-        this.tooltipContainer
-      );
-    } else {
-      this.tooltipContainer.innerHTML = '';
-    }
-  };
+  }
 
   static getDerivedStateFromProps(nextProps) {
     const { userPermission } = nextProps
     if (userPermission === true) {
-      return { userPermission }
+      return { userPermission } 
     }
     return null;
   }
