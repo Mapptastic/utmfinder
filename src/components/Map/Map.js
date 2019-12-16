@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import mapboxgl from 'mapbox-gl';
 
-import Tooltip from '../Tooltip/Tooltip';
 import { findUTMZone } from '../../utils/mapUtils'
 import './Map.scss';
 
