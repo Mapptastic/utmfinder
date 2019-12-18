@@ -24,6 +24,7 @@ function App() {
   };
 
   const error = () => {
+    // eslint-disable-next-line no-console
     console.error('Unable to retrieve location information!')
   };
   const options = {
