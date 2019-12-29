@@ -1,68 +1,70 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<a href="https://github.com/Mapptastic/"><img src="https://avatars2.githubusercontent.com/u/58233055?s=200&v=4" title="Mapptastic" alt="Mapptastic"></a>
 
-## Available Scripts
+# UTM Finder
 
-In the project directory, you can run:
+> A simple React app to find UTM zone.
 
-### `yarn start`
+- [![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger) 
+- [![Coverage Status](http://img.shields.io/coveralls/badges/badgerbadgerbadger.svg?style=flat-square)](https://coveralls.io/r/badges/badgerbadgerbadger)
+- [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![GitHub Logo](https://user-images.githubusercontent.com/7265736/71561904-112b6280-2a8e-11ea-9757-94035dc880de.PNG)
+![GitHub Logo](https://user-images.githubusercontent.com/7265736/71561905-11c3f900-2a8e-11ea-976e-d3a1b6299a3f.PNG)
+![GitHub Logo](https://user-images.githubusercontent.com/7265736/71561906-11c3f900-2a8e-11ea-9a95-6f43bc6b8a2d.PNG)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Table of Contents
 
-### `yarn test`
+- [Installation](#installation)
+- [Contributing](#contributing)
+- [Team](#team)
+- [License](#license)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `yarn build`
+## Installation
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> Clone the project 
+```shell
+$ git clone https://github.com/Mapptastic/utmfinder.git
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+> Install with npm
+```shell
+$ npm install
+```
+## Contributing
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> To get started...
 
-### `yarn eject`
+### Step 1
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- **Option 1**
+    - 🍴 Fork this repo!
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Option 2**
+    - 👯 Clone this repo to your local machine using `https://github.com/Mapptastic/utmfinder.git`
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Step 2
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- **Start Hacking!** 🔨🔨🔨
 
-## Learn More
+### Step 3
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- 🔃 Create a new pull request using <a href="https://github.com/Mapptastic/utmfinder.git" target="_blank">`https://github.com/Mapptastic/utmfinder.git`</a>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## Team
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+| <a href="https://github.com/zhunor" target="_blank">**Orhun Özer**</a> | <a href="https://github.com/capan" target="_blank">**Hüseyin Çapan**</a> |
+| :---: |:---:|
+| <img src="https://avatars0.githubusercontent.com/u/812622?s=460&v=4" width="100" height="100" />   | <img src="https://avatars0.githubusercontent.com/u/7265736?s=460&v=4" width="100" height="100" /> |  
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## License
 
-### Making a Progressive Web App
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- **[MIT license](http://opensource.org/licenses/mit-license.php)**
+- Copyright 2019 © <a href="http://mapptastic.com" target="_blank">Mapptastic</a>.
