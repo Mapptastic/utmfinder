@@ -30,7 +30,7 @@
       -webkit-appearance: none;
       background-color: rgba(10,10,10,.2);
       border: none;
-      border-radius: 290486px;
+      border-radius: 30px;
       cursor: pointer;
       pointer-events: auto;
       display: inline-block;
@@ -50,14 +50,19 @@
       top: .5rem;
 
       &::before{
-        content: 'x'; // here is your X(cross) sign.
+        content: 'X'; // here is your X(cross) sign.
+        position: relative;
         color: #fff;
         font-weight: 300;
         font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 5px;
+        top:-1px;
+        align-items: center;
       }
       &::after{
         content: 'x'; // here is your X(cross) sign.
-        color: #fff;
+        color: rgb(0, 0, 0);
         font-weight: 300;
         font-family: Arial, sans-serif;
         background-color: #fff;
