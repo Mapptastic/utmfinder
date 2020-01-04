@@ -50,15 +50,13 @@
       top: .5rem;
 
       &::before{
-        content: 'X'; // here is your X(cross) sign.
+        content: 'X';
         position: relative;
         color: #fff;
         font-weight: 300;
         font-family: Arial, sans-serif;
         text-align: center;
-        margin: 5px;
-        top:-3px;
-        align-items: center;
+        top: 0px;
       }
       &::after{
         content: 'x'; // here is your X(cross) sign.
